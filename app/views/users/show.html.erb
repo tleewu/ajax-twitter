@@ -1,0 +1,27 @@
+<h1><%= @user.username %></h1>
+
+<%= render "follows/form",
+           user: @user,
+           follow_state: current_user.follows?(@user) ? 'followed' : 'unfollowed'
+%>
+
+<b>Tweets</b>
+<ul>
+  <% @user.tweets.each do |tweet| %>
+    <li><%= render "tweets/tweet", tweet: tweet %></li>
+  <% end %>
+</ul>
+
+<b>Followers</b>
+<ul>
+  <% @user.followers.each do |follower| %>
+    <li><%= follower.username %></li>
+  <% end %>
+</ul>
+
+<b>Followees</b>
+<ul>
+  <% @user.followees.each do |followee| %>
+    <li><%= followee.username %></li>
+  <% end %>
+</ul>
